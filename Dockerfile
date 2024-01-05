@@ -84,8 +84,11 @@ RUN addgroup --system --gid ${FOUNDRY_UID} foundry \
   sed \
   su-exec \
   tzdata \
-  && npm install && echo ${VERSION} > image_version.txt
-
+  && npm install && echo ${VERSION} > image_version.txt \
+  && apk add g++ make python3 \
+  && cd resources/app \
+  && npm install classic-level --build-from-source
+  
 VOLUME ["/data"]
 # HTTP Server
 EXPOSE 30000/TCP
