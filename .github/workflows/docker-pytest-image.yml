@@ -108,14 +108,14 @@ jobs:
             echo "do_decryption=false" >> $GITHUB_OUTPUT
           fi
 
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # tag=v4.1.1
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633  # tag=v4.1.2
       - id: setup-python
         uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c  # tag=v5.0.0
         with:
           python-version: ${{ inputs.python_version }}
 
       - name: Cache testing environments
-        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2  # tag=v4.0.0
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9  # tag=v4.0.2
         env:
           BASE_CACHE_KEY: "${{ github.job }}-${{ runner.os }}-\
             py${{ steps.setup-python.outputs.python-version }}-"
@@ -133,7 +133,7 @@ jobs:
           pip install --upgrade --requirement requirements-test.txt
 
       - name: Download Docker image artifact
-        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe  # tag=v4.1.2
+        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427  # tag=v4.1.4
         with:
           name: ${{ inputs.image_artifact_name }}
           path: ${{ env.ARTIFACT_WORK_DIR }}
